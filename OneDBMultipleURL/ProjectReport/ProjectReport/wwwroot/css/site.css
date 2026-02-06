@@ -1,0 +1,73 @@
+/* ProjectReport - Orange Theme */
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+/* Focus styles */
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus,
+.form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #fd7e14; /* Orange focus */
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    background-color: #fff4e6; /* Light orange background */
+    color: #663c00; /* Dark orange text */
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: #fd7e14; /* Orange */
+    border-color: #fd7e14;
+    color: white;
+}
+
+    .btn-primary:hover {
+        background-color: #e06a00;
+        border-color: #e06a00;
+    }
+
+/* Links */
+a {
+    color: #fd7e14;
+}
+
+    a:hover {
+        color: #e06a00;
+    }
+
+/* Table styling for report */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+    table th, table td {
+        border: 1px solid #e0b08c;
+        padding: 8px;
+        text-align: left;
+    }
+
+    table th {
+        background-color: #ffd8a8;
+    }
+
+    table tr:nth-child(even) {
+        background-color: #fff1e0;
+    }
+
+    table tr:hover {
+        background-color: #ffe0b2;
+    }

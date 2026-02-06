@@ -1,0 +1,25 @@
+﻿@model List<ShopingCartStateManagement.Models.Product>
+
+<h2>All Products</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Stock</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>@product.Name</td>
+                <td>@product.Stock</td>
+                <td>@product.Price</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Create">Add New Product</a>

@@ -1,0 +1,61 @@
+﻿@page
+@model LoginModel
+@{
+    Layout = "_LayoutMinimal";
+    ViewData["Title"] = "Log in";
+}
+
+<body class="login-page bg-body-secondary">
+    <div class="login-box">
+        <div class="login-logo">
+            <a href="/"><b>Shopping</b>CART</a>
+        </div>
+        <div class="card">
+            <div class="card-body login-card-body">
+                <p class="login-box-msg">Sign in to start your session</p>
+
+                <form id="account" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3" role="alert"></div>
+
+                    <!-- Email input -->
+                    <div class="input-group mb-3">
+                        <input asp-for="Input.Email" class="form-control" placeholder="Email" />
+                        <div class="input-group-text">
+                            <span class="bi bi-envelope"></span>
+                        </div>
+                        <span asp-validation-for="Input.Email" class="text-danger"></span>
+                    </div>
+
+                    <!-- Password input -->
+                    <div class="input-group mb-3">
+                        <input asp-for="Input.Password" type="password" class="form-control" placeholder="Password" />
+                        <div class="input-group-text">
+                            <span class="bi bi-lock-fill"></span>
+                        </div>
+                        <span asp-validation-for="Input.Password" class="text-danger"></span>
+                    </div>
+
+                    <!-- Remember Me -->
+                    <div class="row mb-3">
+                        <div class="col-8">
+                            <div class="form-check">
+                                <input class="form-check-input" asp-for="Input.RememberMe" />
+                                <label class="form-check-label" asp-for="Input.RememberMe">
+                                    @Html.DisplayNameFor(m => m.Input.RememberMe)
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="col-4">
+                            <button type="submit" class="btn btn-primary w-100">Sign In</button>
+                        </div>
+                    </div>
+                </form>
+
+                <p class="mb-0">
+                    <a asp-page="./Register" class="text-center">Register a new membership</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</body>

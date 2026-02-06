@@ -1,0 +1,31 @@
+# Build output
+bin/
+obj/
+out/
+publish/
+
+# Visual Studio / IDE
+.vs/
+*.suo
+*.user
+*.userprefs
+*.sln.docstates
+.idea/
+
+# Logs and temporary
+*.log
+*.tmp
+*.temp
+
+# OS generated
+.DS_Store
+Thumbs.db
+
+# NuGet
+*.nupkg
+packages/
+
+# Secrets / config files
+*.config
+*.json
+*.env

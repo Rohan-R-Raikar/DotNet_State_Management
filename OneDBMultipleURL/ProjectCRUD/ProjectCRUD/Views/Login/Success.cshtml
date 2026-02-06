@@ -1,0 +1,19 @@
+﻿@using System.Net
+@{
+    ViewData["Title"] = "Login Success";
+    string token = ViewBag.Token as string;
+    string reportUrl = $"https://localhost:7126/Home/Index?token={WebUtility.UrlEncode(token)}";
+}
+
+<h2>Login Successful ✅</h2>
+
+@if (!string.IsNullOrEmpty(token))
+{
+    <a href="@reportUrl">
+        <button type="button">Generate Report</button>
+    </a>
+}
+else
+{
+    <p style="color:red">⚠ Token not found.</p>
+}
