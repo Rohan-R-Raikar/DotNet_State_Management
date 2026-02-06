@@ -1,0 +1,257 @@
+/* ============================================================
+   Global Theme & Reset
+   ============================================================ */
+:root {
+    /* Color Palette */
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --primary-light: #3b82f6;
+    --success: #22c55e;
+    --danger: #ef4444;
+    --text-dark: #111827;
+    --text-light: #f9fafb;
+    --glass-bg: rgba(255, 255, 255, 0.2);
+    --glass-border: rgba(255, 255, 255, 0.3);
+    /* Shadows */
+    --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.15);
+    --shadow-md: 0 4px 10px rgba(0, 0, 0, 0.2);
+    --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.15);
+    /* Border Radius */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    /* Animation */
+    --transition: all 0.25s ease-in-out;
+}
+
+/* Reset & Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    color: var(--text-dark);
+/*    background: url('../Images/HorizontalPageBackground.png') no-repeat center center fixed;
+    background-size: cover;*/
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: blur(6px);
+    line-height: 1.6;
+}
+
+/* ============================================================
+   Typography
+   ============================================================ */
+h1, h2, h3, h4, h5 {
+    font-weight: 700;
+    color: var(--text-dark);
+    letter-spacing: -0.5px;
+}
+
+/* ============================================================
+   Buttons
+   ============================================================ */
+.btn {
+    font-weight: 600;
+    border-radius: var(--radius-md);
+    padding: 0.45rem 1.1rem;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+    }
+
+/* Variants */
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    border: none;
+    color: var(--text-light);
+}
+
+    .btn-primary:hover {
+        background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+    }
+
+.btn-outline-primary {
+    border: 2px solid var(--primary-light);
+    background: transparent;
+    color: var(--primary-light);
+}
+
+    .btn-outline-primary:hover {
+        background: var(--primary-light);
+        color: var(--text-light);
+    }
+
+.btn-success {
+    background: linear-gradient(135deg, var(--success), #16a34a);
+    color: var(--text-light);
+    border: none;
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, var(--danger), #dc2626);
+    color: var(--text-light);
+    border: none;
+}
+
+.btn-link {
+    background: none;
+    border: none;
+    color: inherit;
+    padding: 0;
+    cursor: pointer;
+}
+
+/* ============================================================
+   Navbar
+   ============================================================ */
+.navbar {
+    background: var(--glass-bg) !important;
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-sm);
+    padding: 0.75rem 1rem;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: var(--primary) !important;
+}
+
+.navbar-nav .nav-link {
+    font-weight: 500;
+    color: var(--text-dark) !important;
+    transition: color 0.2s ease-in-out;
+}
+
+    .navbar-nav .nav-link:hover {
+        color: var(--primary) !important;
+    }
+
+/* ============================================================
+   Cards
+   ============================================================ */
+.card {
+    border: none;
+    border-radius: var(--radius-lg);
+    background: url('../Images/HorizontalPageBackground.png') no-repeat center center;
+    background-size: cover;
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    transition: var(--transition);
+    animation: fadeInUp 0.4s ease-in-out;
+}
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-lg);
+    }
+
+.card-body {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(6px);
+    padding: 1rem;
+}
+
+    .card-body h5 {
+        font-size: 1.15rem;
+        font-weight: 700;
+    }
+
+    .card-body p {
+        font-size: 0.92rem;
+        color: #374151;
+    }
+
+/* ============================================================
+   Forms
+   ============================================================ */
+form[method="get"] {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+    form[method="get"] input[type="text"] {
+        border: 1px solid var(--glass-border);
+        border-radius: var(--radius-sm);
+        padding: 0.5rem 0.75rem;
+        background: var(--glass-bg);
+        backdrop-filter: blur(5px);
+        color: var(--text-dark);
+        transition: var(--transition);
+    }
+
+        form[method="get"] input[type="text"]:focus {
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.3);
+        }
+
+/* ============================================================
+   Lists
+   ============================================================ */
+.list-group {
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+.list-group-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.85rem 1.2rem;
+    background: rgba(255, 255, 255, 0.85);
+    border-bottom: 1px solid rgba(229, 231, 235, 0.6);
+    transition: background 0.2s ease-in-out;
+}
+
+    .list-group-item:hover {
+        background: rgba(255, 255, 255, 0.95);
+    }
+
+/* ============================================================
+   Animations
+   ============================================================ */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width: 768px) {
+    .form-control.w-50 {
+        width: 100% !important;
+    }
+
+    .d-flex.justify-content-between {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+}

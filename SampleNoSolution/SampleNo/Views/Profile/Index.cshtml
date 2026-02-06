@@ -1,0 +1,55 @@
+﻿@{
+    ViewData["Title"] = "My Profile";
+}
+
+<h2 class="mb-4">My Profile</h2>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="card shadow-sm mb-4">
+            <div class="card-body">
+                <h5 class="card-title">👤 About Me</h5>
+                <p><strong>Email:</strong> @User.Identity?.Name</p>
+                <p><strong>Logged In:</strong> @DateTime.Now.ToString("dd MMM yyyy hh:mm tt")</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card shadow-sm mb-4">
+            <div class="card-body">
+                <h5 class="card-title">📚 My Stories</h5>
+                <p>View, edit or delete your stories.</p>
+                <a class="btn btn-primary" asp-controller="Profile" asp-action="MyStories">Manage Stories</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card shadow-sm mb-4">
+            <div class="card-body">
+                <h5 class="card-title">📝 My Posts</h5>
+                <p>View, edit or delete your posts.</p>
+                <a class="btn btn-primary" asp-controller="Profile" asp-action="MyPosts">Manage Posts</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card shadow-sm mb-4">
+            <div class="card-body">
+                <h5 class="card-title">➕ Add Story</h5>
+                <p>Share a new story.</p>
+                <a class="btn btn-success" asp-controller="Profile" asp-action="AddStory">Add Story</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card shadow-sm mb-4">
+            <div class="card-body">
+                <h5 class="card-title">➕ Add Post</h5>
+                <p>Create a new post.</p>
+                <a class="btn btn-success" asp-controller="Profile" asp-action="AddPost">Add Post</a>
+            </div>
+        </div>
+    </div>
+</div>

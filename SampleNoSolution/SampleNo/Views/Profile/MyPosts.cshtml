@@ -1,0 +1,100 @@
+﻿@model IEnumerable<SampleNo.Models.PostDto>
+@{
+    ViewData["Title"] = "My Posts";
+}
+
+<h2 class="mb-4">📝 My Posts</h2>
+
+@if (!Model.Any())
+{
+    <p>No posts found.</p>
+}
+else
+{
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        @foreach (var post in Model)
+        {
+            <div class="col">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body">
+                        <input type="hidden" class="post-id" value="@post.Id" />
+
+                        <h5 class="card-title view-mode">@post.Title</h5>
+                        <input class="form-control edit-mode d-none title-input" value="@post.Title" />
+
+                        <p class="card-text text-muted view-mode">@post.Description</p>
+                        <textarea class="form-control edit-mode d-none desc-input">@post.Description</textarea>
+
+                        <span class="badge bg-info text-dark view-mode">Status: @post.Status</span>
+                        <select class="form-select form-select-sm edit-mode d-none status-select">
+                            <option selected>@post.Status</option>
+                            <option>Published</option>
+                            <option>Scheduled</option>
+                            <option>Draft</option>
+                            <option>Archived</option>
+                        </select>
+                    </div>
+
+                    <div class="card-footer bg-white border-0 d-flex justify-content-between">
+                        <div class="view-mode">
+                            <button class="btn btn-sm btn-warning edit-btn">Edit</button>
+                            <a class="btn btn-sm btn-danger" href="#" onclick="return confirmDeletePost(@post.Id)">Delete</a>
+                        </div>
+                        <div class="edit-mode d-none">
+                            <button class="btn btn-sm btn-success save-btn">Save</button>
+                            <button class="btn btn-sm btn-secondary cancel-btn">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+@section Scripts {
+    
+    <script>
+        $(".edit-btn").click(function () {
+            var card = $(this).closest(".card");
+            card.find(".view-mode").addClass("d-none");
+            card.find(".edit-mode").removeClass("d-none");
+        });
+
+        $(".cancel-btn").click(function () {
+            var card = $(this).closest(".card");
+            card.find(".edit-mode").addClass("d-none");
+            card.find(".view-mode").removeClass("d-none");
+        });
+
+        $(".save-btn").click(function () {
+            var card = $(this).closest(".card");
+            var id = card.find(".post-id").val();
+            var title = card.find(".title-input").val();
+            var desc = card.find(".desc-input").val();
+            var status = card.find(".status-select").val();
+
+            $.ajax({
+                url: '/Profile/UpdatePostInline',
+                method: 'POST',
+                data: {
+                    id: id,
+                    title: title,
+                    description: desc,
+                    status: status
+                },
+                success: function () {
+                    location.reload(); // Reload to reflect changes (or update DOM directly)
+                },
+                error: function () {
+                    alert("Error saving post.");
+                }
+            });
+        });
+
+        function confirmDeletePost(id) {
+            if (confirm("Are you sure you want to delete this post?")) {
+                window.location.href = '/Profile/DeletePost/' + id;
+            }
+            return false;
+        }
+    </script>
+}

@@ -1,0 +1,59 @@
+﻿@model SampleNo.Models.StoryDto
+@{
+    ViewData["Title"] = "Add Story";
+}
+
+<div class="container mt-4">
+    <div class="card shadow border-0">
+        <div class="card-header bg-success text-white">
+            <h4 class="mb-0">📚 Add New Story</h4>
+        </div>
+        <div class="card-body">
+            <form asp-action="AddStory" method="post">
+                <div class="mb-3">
+                    <label asp-for="Title" class="form-label">Title</label>
+                    <input asp-for="Title" class="form-control" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Description" class="form-label">Description</label>
+                    <textarea asp-for="Description" class="form-control" rows="4"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Status" class="form-label">Status</label>
+                    <select asp-for="Status" class="form-select" id="statusSelect">
+                        <option value="0">Draft</option>
+                        <option value="1">Scheduled</option>
+                        <option value="2">Published</option>
+                        <option value="3">Archived</option>
+                    </select>
+                    <span asp-validation-for="Status" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3" id="publishAtContainer" style="display:none;">
+                    <label asp-for="PublishAt" class="form-label">Publish At</label>
+                    <input asp-for="PublishAt" class="form-control" type="datetime-local" />
+                    <span asp-validation-for="PublishAt" class="text-danger"></span>
+                </div>
+
+                <script>
+                                        document.getElementById('statusSelect').addEventListener('change', function () {
+                                            const publishContainer = document.getElementById('publishAtContainer');
+                                            if (this.value === "1") { // Scheduled
+                                                publishContainer.style.display = 'block';
+                                            } else {
+                                                publishContainer.style.display = 'none';
+                                            }
+                                        });
+                                                            </script>
+
+                <button type="submit" class="btn btn-primary">Add Story</button>
+                <a asp-action="Index" class="btn btn-secondary ms-2">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>
+
